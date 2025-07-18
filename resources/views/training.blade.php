@@ -40,66 +40,35 @@
 
                             </div>
                             <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Q: What type of software development services do you provide?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show active" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body rounded">
-                                            A:We offer custom software solutions, including mobile apps, web applications, ERP/CRM systems, and cloud-based platforms tailored to your business needs
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Q: How long does it take to build custom software?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            A: The timeline depends on project complexity, features, and platform. A simple application may take 4–6 weeks, while complex systems could take several months
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Q: What technologies do you work with?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            A: We specialize in Java, Kotlin, Flutter, Laravel, Python Django, PHP, and modern front-end frameworks like React and Vue.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
-                                            Q:  Will I get updates during development?
-                                        </button>
-                                    </h2>
-                                    <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            A: Yes! We maintain full transparency and provide regular updates through calls, emails, or project management tools like Trello or Jira.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                            Q:  Do you offer post-launch support and maintenance?
-                                        </button>
-                                    </h2>
-                                    <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            A: Absolutely. We provide ongoing support, bug fixing, and feature upgrades to ensure your application performs smoothly.
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="accordion" id="accordionExample">
+    @forelse($trainnigdata->topics as $index => $topic)
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ $topic->id }}">
+                <button class="accordion-button {{ $index !== 0 ? 'collapsed' : '' }}"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ $topic->id }}"
+                        aria-expanded="{{ $index === 0 ? 'true' : 'false' }}"
+                        aria-controls="collapse{{ $topic->id }}">
+                    {{ $topic->topic_name }}
+                </button>
+            </h2>
+            <div id="collapse{{ $topic->id }}"
+                 class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}"
+                 aria-labelledby="heading{{ $topic->id }}"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {{ $topic->topic_description }}
+                </div>
+            </div>
+        </div>
+    @empty
+        <p>No topics available.</p>
+    @endforelse
+</div>
+
+
+
                             </div>
                         </div>
                         </div>

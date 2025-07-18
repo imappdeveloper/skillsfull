@@ -17,4 +17,8 @@ class Training extends Model
     'start_date',
     'hours',
 ];
+public function topics()
+{
+    return $this->hasMany(Topic::class)->where('status', true);
+}
 }

@@ -65,6 +65,11 @@
           <i class="fas fa-fw fa fa-question-circle"></i>
           <span>Enquiries</span></a>
       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{ url('admin/topics')}}">
+          <i class="fas fa-fw fa fa-question-circle"></i>
+          <span>Topics</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"

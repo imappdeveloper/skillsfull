@@ -10,6 +10,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\TopicController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -85,6 +86,10 @@ Route::get('admin/portfolio/delete/{id}', [PortfolioController::class, 'destroy'
 Route::get('admin/enquiries', [EnquiryController::class, 'index'])->name('enquiry.index');
 Route::get('admin/enquiry/{id}/edit', [EnquiryController::class, 'edit'])->name('enquiry.edit');
 Route::put('/enquiry/{id}', [EnquiryController::class, 'update'])->name('enquiry.update');
+
+Route::resource('admin/topics', TopicController::class);
+
 });
+
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
