@@ -19,6 +19,8 @@ jobs:
           touch database/database.sqlite
     - name: Install Dependencies
       run: composer install --no-dev --optimize-autoloader
+    - name: Run database migrations
+      run: php artisan migrate --force
 
     - name: Deploy to FTP server
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
