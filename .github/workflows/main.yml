@@ -13,13 +13,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
   
-    - name: Ensure SQLite database exists
-      run: |
-          mkdir -p database
-          touch database/database.sqlite
+    # - name: Ensure SQLite database exists
+    #   run: |
+    #       mkdir -p database
+    #       touch database/database.sqlite
           
-    - name: Run database migrations
-      run: php artisan migrate --force
+    # - name: Run database migrations
+    #   run: php artisan migrate --force
         
     - name: Install Dependencies
       run: composer install --no-dev --optimize-autoloader
